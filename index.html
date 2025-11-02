@@ -4,27 +4,35 @@
   <meta charset="UTF-8" />
   <title>White Rabbit — Social & Content Studio, Praha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Agilní digitální studio z Prahy. Sociální sítě, obsah, focení, video, kampaně bez bullshitu." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0f1013;
-      --fg: #fff;
-      --muted: rgba(255,255,255,.55);
+      --bg-soft: rgba(255,255,255,0.02);
+      --fg: #ffffff;
+      --muted: rgba(255,255,255,0.55);
       --accent: #ff4d6d;
+      --radius: 18px;
       --max: 1100px;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #191b21 0%, #0f1013 52%, #0b0c0f 100%);
       color: var(--fg);
+      line-height: 1.6;
     }
+    a { color: inherit; text-decoration: none; }
     header {
       position: sticky;
       top: 0;
       z-index: 50;
       backdrop-filter: blur(14px);
-      background: rgba(15,16,19,0.55);
+      background: rgba(15,16,19,0.5);
       border-bottom: 1px solid rgba(255,255,255,0.04);
     }
     .nav {
@@ -33,128 +41,222 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: .9rem 1.4rem;
+      padding: 1.1rem 1.4rem;
       gap: 1rem;
     }
     .logo {
+      font-weight: 700;
+      letter-spacing: -.02em;
       display: flex;
-      gap: .45rem;
       align-items: center;
-      font-weight: 600;
+      gap: .4rem;
     }
-    .logo-dot {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
+    .logo-badge {
+      width: 28px;
+      height: 28px;
       background: var(--accent);
+      border-radius: 999px;
     }
     .nav-links {
       display: flex;
       gap: .5rem;
     }
     .nav-links a {
-      padding: .35rem .8rem;
+      padding: .4rem .8rem;
       border-radius: 999px;
-      font-size: .85rem;
+      font-size: .9rem;
       color: rgba(255,255,255,.7);
     }
     .nav-links a:hover,
     .nav-links a.active {
-      background: rgba(255,255,255,.07);
+      background: rgba(255,255,255,.06);
       color: #fff;
     }
     .btn-primary {
       background: var(--accent);
       color: #000;
-      padding: .45rem .95rem;
+      padding: .55rem 1.05rem;
       border-radius: 999px;
-      border: none;
       font-weight: 600;
-      font-size: .8rem;
+      font-size: .88rem;
+      border: none;
       cursor: pointer;
     }
-    /* mobilní button */
-    .menu-toggle {
-      display: none;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.05);
-      border-radius: 999px;
-      width: 34px;
-      height: 34px;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-    .menu-toggle span {
-      width: 18px;
-      height: 2px;
-      background: #fff;
-      display: block;
-      position: relative;
-    }
-    .menu-toggle span::before,
-    .menu-toggle span::after {
-      content: "";
-      position: absolute;
-      width: 18px;
-      height: 2px;
-      background: #fff;
-      left: 0;
-    }
-    .menu-toggle span::before { top: -6px; }
-    .menu-toggle span::after { top: 6px; }
-
-    /* mobilní overlay menu */
-    .mobile-menu {
-      display: none;
-      background: rgba(15,16,19,0.98);
-      backdrop-filter: blur(12px);
-      position: fixed;
-      inset: 58px 0 0 0;
-      z-index: 45;
-      padding: 1.1rem 1.3rem 2.5rem;
-    }
-    .mobile-menu a {
-      display: block;
-      padding: .65rem 0;
-      border-bottom: 1px solid rgba(255,255,255,.03);
-      color: rgba(255,255,255,.85);
-    }
-    .mobile-menu .btn-primary {
-      margin-top: 1rem;
-      display: inline-block;
-    }
-
     main {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 3.5rem 1.4rem 4.5rem;
+      padding: 4.5rem 1.4rem 5rem;
+    }
+    .hero {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1.05fr .9fr;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+    .eyebrow {
+      display: inline-flex;
+      gap: .5rem;
+      align-items: center;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.05);
+      padding: .25rem .75rem;
+      border-radius: 999px;
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: rgba(255,255,255,.6);
     }
     h1 {
-      font-size: clamp(2.5rem, 5vw, 3.3rem);
+      font-size: clamp(2.7rem, 5vw, 3.4rem);
+      line-height: 1.02;
+      letter-spacing: -.03em;
+      margin: 1.1rem 0 .8rem;
+    }
+    .hero p {
+      color: var(--muted);
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-cta {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .hero-card {
+      background: radial-gradient(circle at 20% 20%, rgba(255,77,109,0.3) 0%, rgba(255,77,109,0) 55%), rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.04);
+      border-radius: 22px;
+      padding: 1.6rem 1.4rem 1.4rem;
+    }
+    .hero-card h2 {
+      margin: .3rem 0;
+      font-size: 1.25rem;
+    }
+    .hero-card p {
+      font-size: .85rem;
+      color: rgba(255,255,255,.6);
       margin-bottom: .7rem;
     }
-    p { color: var(--muted); max-width: 32rem; }
-
-    @media (max-width: 900px) {
-      .nav-links,
-      .btn-primary.desktop-only {
-        display: none;
-      }
-      .menu-toggle {
-        display: inline-flex;
-      }
-      main { padding-top: 3rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tag {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.02);
+      padding: .2rem .6rem;
+      border-radius: 999px;
+      font-size: .68rem;
+      color: rgba(255,255,255,.75);
     }
-    .mobile-menu.open { display: block; }
+
+    section { margin-bottom: 4.5rem; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .section-title h2 { font-size: 1.4rem; }
+    .services {
+      display: grid;
+      gap: 1.1rem;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    }
+    .card {
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.03);
+      border-radius: 16px;
+      padding: 1.15rem 1.15rem 1.05rem;
+    }
+    .card h3 { margin-top: .1rem; }
+    .card p { color: rgba(255,255,255,.5); font-size: .84rem; }
+    .work-grid {
+      display: grid;
+      gap: 1.1rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .work-item {
+      background: linear-gradient(160deg, rgba(255,255,255,.04) 0%, rgba(255,255,255,0) 70%);
+      border: 1px solid rgba(255,255,255,.02);
+      border-radius: 18px;
+      padding: 1rem 1rem 1.35rem;
+    }
+    .work-item small {
+      color: rgba(255,255,255,.4);
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+    .testimonial {
+      background: radial-gradient(circle at 15% 15%, rgba(255,77,109,0.11) 0%, rgba(255,77,109,0) 45%), rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.03);
+      border-radius: 18px;
+      padding: 1.3rem 1.4rem 1.2rem;
+      font-size: .9rem;
+    }
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.1rem;
+    }
+    .price {
+      background: rgba(255,255,255,.01);
+      border: 1px solid rgba(255,255,255,.03);
+      border-radius: 18px;
+      padding: 1.3rem 1.3rem 1.25rem;
+    }
+    .price h3 { margin-bottom: .4rem; }
+    .price strong { font-size: 1.5rem; }
+    .price ul { list-style: none; padding: 0; margin: .9rem 0 1.1rem; }
+    .price li {
+      margin-bottom: .35rem;
+      color: rgba(255,255,255,.6);
+      font-size: .78rem;
+    }
+
+    .cta-box {
+      background: linear-gradient(120deg, rgba(255,77,109,0.25) 0%, rgba(15,16,19,0) 65%);
+      border: 1px solid rgba(255,255,255,.03);
+      border-radius: 22px;
+      padding: 2rem 2.2rem 2.1rem;
+      text-align: left;
+    }
+    .cta-box h2 { margin-top: 0; margin-bottom: .5rem; }
+    .cta-box p { color: rgba(255,255,255,.7); max-width: 34rem; }
+
+    footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.7rem 1.4rem 3.5rem;
+      color: rgba(255,255,255,.4);
+      font-size: .78rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .nav-links { display: none; }
+      main { padding-top: 3.5rem; }
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="nav">
       <div class="logo">
-        <div class="logo-dot"></div>
-        White Rabbit
+        <div class="logo-badge"></div> White Rabbit
       </div>
       <nav class="nav-links">
         <a href="#sluzby" class="active">Služby</a>
@@ -162,36 +264,157 @@
         <a href="#cenik">Ceník</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
-      <button class="btn-primary desktop-only" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'});">
-        Domluvte focení / obsah
-      </button>
-      <button class="menu-toggle" aria-label="Otevřít menu" onclick="toggleMenu()">
-        <span></span>
-      </button>
+      <a href="#kontakt" class="btn-primary">Domluvte focení / obsah</a>
     </div>
   </header>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#sluzby" onclick="toggleMenu()">Služby</a>
-    <a href="#prace" onclick="toggleMenu()">Práce</a>
-    <a href="#cenik" onclick="toggleMenu()">Ceník</a>
-    <a href="#kontakt" onclick="toggleMenu()">Kontakt</a>
-    <a class="btn-primary" href="#kontakt" onclick="toggleMenu()">Domluvit</a>
-  </div>
-
   <main>
-    <section>
-      <h1>Děláme obsah, který se dá publikovat hned.</h1>
-      <p>Praha 7, social media, focení, videa, kampaně. Stejný layout jako ve Frameru: nahoře sticky menu, dole sekce. Tohle je tvoje „refined“ verze.</p>
+    <section class="hero" id="home">
+      <div>
+        <span class="eyebrow">Praha · Social & photo</span>
+        <h1>Děláme obsah, který se dá reálně použít.</h1>
+        <p>White Rabbit je agilní tým zaměřený na sociální sítě, portrétní a produktové focení a rychlou produkci pro značky. Bez řečnických otázek, bez „energie vody“, jen to, co se dá publikovat.</p>
+        <div class="hero-cta">
+          <a href="#kontakt" class="btn-primary">Chci obsah</a>
+          <span style="color:rgba(255,255,255,.55);font-size:.8rem;">nebo si projděte práce ↓</span>
+        </div>
+        <div class="hero-meta">
+          <div>
+            <div style="font-size:1.5rem;font-weight:600;">+24</div>
+            <div style="font-size:.75rem;color:rgba(255,255,255,.5);">značek obslouženo</div>
+          </div>
+          <div>
+            <div style="font-size:1.5rem;font-weight:600;">Praha 7</div>
+            <div style="font-size:.75rem;color:rgba(255,255,255,.5);">studio / lokace</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <p style="text-transform:uppercase;font-size:.65rem;color:rgba(255,255,255,.5);letter-spacing:.15em;">Specializace</p>
+        <h2>Portréty & headshoty</h2>
+        <p>Pro zakladatele, doktory, interní týmy, advokáty. Přijedeme nebo fotíme u nás.</p>
+        <div class="tags">
+          <span class="tag">IG / FB ready</span>
+          <span class="tag">HSS · Fuji GFX</span>
+          <span class="tag">Retuš v ceně</span>
+          <span class="tag">Možnost videa</span>
+        </div>
+      </div>
     </section>
-    <!-- tady by pokračoval zbytek stránky -->
+
+    <section id="sluzby">
+      <div class="section-title">
+        <h2>Služby</h2>
+        <a href="#kontakt" style="font-size:.8rem;color:rgba(255,255,255,.6);">Objednat →</a>
+      </div>
+      <div class="services">
+        <div class="card">
+          <h3>Social media management</h3>
+          <p>Správa profilů, tvorba formátů, copy. Připravíme měsíční plán a hotové výstupy.</p>
+        </div>
+        <div class="card">
+          <h3>Foto / video produkce</h3>
+          <p>Portréty, produktové focení, Reels / Shorts. Styl pro Aquilu, Poděbradku, Hanáckou známe.</p>
+        </div>
+        <div class="card">
+          <h3>UGC / spolupráce</h3>
+          <p>Osobnosti / influenceři, posílání produktů, soutěže, jednoduché aktivačky.</p>
+        </div>
+        <div class="card">
+          <h3>Poradenství</h3>
+          <p>Když máte interní tým a chcete nastavovat styl, tone of voice a brandové guidelines.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="prace">
+      <div class="section-title">
+        <h2>Vybrané práce</h2>
+        <span style="color:rgba(255,255,255,.5);font-size:.8rem;">Ukázky, které můžeme rozebrat na callu.</span>
+      </div>
+      <div class="work-grid">
+        <div class="work-item">
+          <small>Poděbradka · 120 let</small>
+          <h3>Reels + focení v Poděbradech</h3>
+          <p>Krátká videa s moderátorkou, cyklo content, lokální insight. Připraveno na IG i Reels.</p>
+        </div>
+        <div class="work-item">
+          <small>Hanácká · funkční vody</small>
+          <h3>Podzimní focení s hercem</h3>
+          <p>Occasions podle claimů „paměť / kolagen“, fotky + video výstupy.</p>
+        </div>
+        <div class="work-item">
+          <small>Nutribullet</small>
+          <h3>IG / FB content & akce</h3>
+          <p>Recepty, stories, eventová komunikace, retuše, české copy bez zbytečných frází.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>Co o nás říkají</h2>
+      </div>
+      <div class="testimonial">
+        „Dodávají použitelné výstupy. Neřešíme deset iterací, rovnou to máme nachystané na publikaci.“ — Marketing manager, nápojová kategorie
+      </div>
+    </section>
+
+    <section id="cenik">
+      <div class="section-title">
+        <h2>Spolupráce</h2>
+        <span style="color:rgba(255,255,255,.5);font-size:.8rem;">Ceny orientační — podle rozsahu.</span>
+      </div>
+      <div class="pricing">
+        <div class="price">
+          <h3>Jednorázové focení</h3>
+          <strong>od 5 500 Kč</strong>
+          <ul>
+            <li>portréty / tým / produkt</li>
+            <li>Praha 7 a okolí</li>
+            <li>retuš v základním rozsahu</li>
+          </ul>
+          <a href="#kontakt" class="btn-primary">Domluvit termín</a>
+        </div>
+        <div class="price">
+          <h3>Obsah na sítě</h3>
+          <strong>od 12 000 Kč</strong>
+          <ul>
+            <li>fotky + krátká videa</li>
+            <li>copy v češtině</li>
+            <li>připravené na IG / FB</li>
+          </ul>
+          <a href="#kontakt" class="btn-primary">Chci měsíčně</a>
+        </div>
+        <div class="price">
+          <h3>Agenturní spolupráce</h3>
+          <strong>na dotaz</strong>
+          <ul>
+            <li>více značek</li>
+            <li>rychlá produkce</li>
+            <li>online consulting</li>
+          </ul>
+          <a href="#kontakt" class="btn-primary">Napište nám</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="cta-box">
+        <h2>Pojďme rovnou domluvit obsah.</h2>
+        <p>Napište nám termín, lokaci (ideálně Praha 7 / Letná) a účel fotek/videa. Pošleme zpět variantu a cenu.</p>
+        <form onsubmit="event.preventDefault(); alert('Tady bys napojil formulář na backend nebo službu typu Netlify Forms / Formspree.');" style="margin-top:1.3rem; display:flex; gap:.7rem; flex-wrap:wrap;">
+          <input type="email" required placeholder="Váš e-mail" style="padding:.55rem .7rem;border-radius:12px;border:none;min-width:15rem;">
+          <input type="text" placeholder="Co potřebujete (např. focení tým + 10 fotek)" style="padding:.55rem .7rem;border-radius:12px;border:none;min-width:17rem;flex:1;">
+          <button class="btn-primary" type="submit">Odeslat</button>
+        </form>
+      </div>
+    </section>
   </main>
 
-  <script>
-    function toggleMenu() {
-      var m = document.getElementById('mobileMenu');
-      m.classList.toggle('open');
-    }
-  </script>
+  <footer>
+    <div>© White Rabbit, Praha — sociální sítě & focení</div>
+    <div>Vyrobeno podle šablony z Frameru.</div>
+  </footer>
 </body>
 </html>
