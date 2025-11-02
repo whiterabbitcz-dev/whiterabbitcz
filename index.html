@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <title>White Rabbit — Social & Content Studio, Praha</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0f1013;
+      --fg: #fff;
+      --muted: rgba(255,255,255,.55);
+      --accent: #ff4d6d;
+      --max: 1100px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #191b21 0%, #0f1013 52%, #0b0c0f 100%);
+      color: var(--fg);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(15,16,19,0.55);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .9rem 1.4rem;
+      gap: 1rem;
+    }
+    .logo {
+      display: flex;
+      gap: .45rem;
+      align-items: center;
+      font-weight: 600;
+    }
+    .logo-dot {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+    .nav-links {
+      display: flex;
+      gap: .5rem;
+    }
+    .nav-links a {
+      padding: .35rem .8rem;
+      border-radius: 999px;
+      font-size: .85rem;
+      color: rgba(255,255,255,.7);
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(255,255,255,.07);
+      color: #fff;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      padding: .45rem .95rem;
+      border-radius: 999px;
+      border: none;
+      font-weight: 600;
+      font-size: .8rem;
+      cursor: pointer;
+    }
+    /* mobilní button */
+    .menu-toggle {
+      display: none;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.05);
+      border-radius: 999px;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .menu-toggle span {
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      display: block;
+      position: relative;
+    }
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      left: 0;
+    }
+    .menu-toggle span::before { top: -6px; }
+    .menu-toggle span::after { top: 6px; }
+
+    /* mobilní overlay menu */
+    .mobile-menu {
+      display: none;
+      background: rgba(15,16,19,0.98);
+      backdrop-filter: blur(12px);
+      position: fixed;
+      inset: 58px 0 0 0;
+      z-index: 45;
+      padding: 1.1rem 1.3rem 2.5rem;
+    }
+    .mobile-menu a {
+      display: block;
+      padding: .65rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.03);
+      color: rgba(255,255,255,.85);
+    }
+    .mobile-menu .btn-primary {
+      margin-top: 1rem;
+      display: inline-block;
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3.5rem 1.4rem 4.5rem;
+    }
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 3.3rem);
+      margin-bottom: .7rem;
+    }
+    p { color: var(--muted); max-width: 32rem; }
+
+    @media (max-width: 900px) {
+      .nav-links,
+      .btn-primary.desktop-only {
+        display: none;
+      }
+      .menu-toggle {
+        display: inline-flex;
+      }
+      main { padding-top: 3rem; }
+    }
+    .mobile-menu.open { display: block; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <div class="logo-dot"></div>
+        White Rabbit
+      </div>
+      <nav class="nav-links">
+        <a href="#sluzby" class="active">Služby</a>
+        <a href="#prace">Práce</a>
+        <a href="#cenik">Ceník</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <button class="btn-primary desktop-only" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'});">
+        Domluvte focení / obsah
+      </button>
+      <button class="menu-toggle" aria-label="Otevřít menu" onclick="toggleMenu()">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#sluzby" onclick="toggleMenu()">Služby</a>
+    <a href="#prace" onclick="toggleMenu()">Práce</a>
+    <a href="#cenik" onclick="toggleMenu()">Ceník</a>
+    <a href="#kontakt" onclick="toggleMenu()">Kontakt</a>
+    <a class="btn-primary" href="#kontakt" onclick="toggleMenu()">Domluvit</a>
+  </div>
+
+  <main>
+    <section>
+      <h1>Děláme obsah, který se dá publikovat hned.</h1>
+      <p>Praha 7, social media, focení, videa, kampaně. Stejný layout jako ve Frameru: nahoře sticky menu, dole sekce. Tohle je tvoje „refined“ verze.</p>
+    </section>
+    <!-- tady by pokračoval zbytek stránky -->
+  </main>
+
+  <script>
+    function toggleMenu() {
+      var m = document.getElementById('mobileMenu');
+      m.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
