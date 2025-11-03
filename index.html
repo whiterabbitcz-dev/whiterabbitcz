@@ -2,419 +2,447 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
-  <title>White Rabbit — Social & Content Studio, Praha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Agilní digitální studio z Prahy. Sociální sítě, obsah, focení, video, kampaně bez bullshitu." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>White Rabbit – kreativita a efektivita bez bull****</title>
   <style>
     :root {
-      --bg: #0f1013;
-      --bg-soft: rgba(255,255,255,0.02);
-      --fg: #ffffff;
-      --muted: rgba(255,255,255,0.55);
-      --accent: #ff4d6d;
-      --radius: 18px;
-      --max: 1100px;
+      --bg: #0f1115;
+      --surface: rgba(15, 17, 21, 0.7);
+      --card: rgba(255, 255, 255, 0.03);
+      --text: #ffffff;
+      --muted: rgba(255, 255, 255, 0.55);
+      --radius-lg: 32px;
+      --radius-md: 20px;
+      --max-width: 1180px;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #191b21 0%, #0f1013 52%, #0b0c0f 100%);
-      color: var(--fg);
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1b1e25 0%, #0f1115 45%, #0b0d10 100%);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
     a { color: inherit; text-decoration: none; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(15,16,19,0.5);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-    .nav {
-      max-width: var(--max);
+    .page {
+      width: min(100%, 1240px);
       margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.1rem 1.4rem;
-      gap: 1rem;
+      padding: 1.4rem 1.4rem 3.5rem;
     }
-    .logo {
-      font-weight: 700;
-      letter-spacing: -.02em;
+
+    /* sticky pill nav */
+    .top-nav-wrapper {
+      position: sticky;
+      top: 0.8rem;
+      z-index: 50;
       display: flex;
-      align-items: center;
-      gap: .4rem;
+      justify-content: center;
+      pointer-events: none;
     }
-    .logo-badge {
-      width: 28px;
-      height: 28px;
-      background: var(--accent);
+    .top-nav {
+      pointer-events: auto;
+      backdrop-filter: blur(22px);
+      background: rgba(11, 12, 14, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 9999px;
+      padding: 0.45rem 0.45rem;
+      display: flex;
+      gap: 0.35rem;
+      align-items: center;
+    }
+    .nav-brand {
+      font-weight: 600;
+      padding: 0.4rem 0.8rem 0.4rem 0.65rem;
+      display: flex;
+      gap: 0.35rem;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.03);
       border-radius: 999px;
+      font-size: 0.8rem;
     }
     .nav-links {
       display: flex;
-      gap: .5rem;
+      gap: 0.2rem;
     }
-    .nav-links a {
-      padding: .4rem .8rem;
+    .nav-link {
+      padding: 0.35rem 0.9rem;
       border-radius: 999px;
-      font-size: .9rem;
-      color: rgba(255,255,255,.7);
+      font-size: 0.78rem;
+      color: var(--muted);
+      transition: background 0.2s;
     }
-    .nav-links a:hover,
-    .nav-links a.active {
-      background: rgba(255,255,255,.06);
+    .nav-link:hover,
+    .nav-link.active {
+      background: rgba(255, 255, 255, 0.07);
       color: #fff;
     }
-    .btn-primary {
-      background: var(--accent);
-      color: #000;
-      padding: .55rem 1.05rem;
+    .nav-cta {
+      background: #fff;
+      color: #0f1115;
+      font-weight: 500;
+      padding: 0.35rem 0.85rem;
       border-radius: 999px;
-      font-weight: 600;
-      font-size: .88rem;
-      border: none;
-      cursor: pointer;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
     }
-    main {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 4.5rem 1.4rem 5rem;
+
+    section {
+      padding-top: clamp(3rem, 5vh, 4rem);
     }
     .hero {
       display: grid;
-      gap: 2rem;
-      grid-template-columns: 1.05fr .9fr;
-      align-items: center;
-      margin-bottom: 4rem;
-    }
-    .eyebrow {
-      display: inline-flex;
-      gap: .5rem;
-      align-items: center;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.05);
-      padding: .25rem .75rem;
-      border-radius: 999px;
-      font-size: .7rem;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      color: rgba(255,255,255,.6);
-    }
-    h1 {
-      font-size: clamp(2.7rem, 5vw, 3.4rem);
-      line-height: 1.02;
-      letter-spacing: -.03em;
-      margin: 1.1rem 0 .8rem;
-    }
-    .hero p {
-      color: var(--muted);
-      max-width: 32rem;
-      margin-bottom: 1.5rem;
-    }
-    .hero-cta {
-      display: flex;
-      gap: .75rem;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .hero-meta {
-      display: flex;
       gap: 1.5rem;
-      margin-top: 1.5rem;
+      margin-top: clamp(2.1rem, 6vh, 3rem);
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      align-items: center;
+    }
+    .hero-title {
+      font-size: clamp(2.6rem, 4vw, 3.3rem);
+      font-weight: 650;
+      letter-spacing: -0.03em;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .hero-sub {
+      color: var(--muted);
+      max-width: 38rem;
+      font-size: 1rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 0.7rem;
+      margin-top: 1rem;
       flex-wrap: wrap;
     }
-    .hero-card {
-      background: radial-gradient(circle at 20% 20%, rgba(255,77,109,0.3) 0%, rgba(255,77,109,0) 55%), rgba(255,255,255,.02);
-      border: 1px solid rgba(255,255,255,.04);
-      border-radius: 22px;
-      padding: 1.6rem 1.4rem 1.4rem;
-    }
-    .hero-card h2 {
-      margin: .3rem 0;
-      font-size: 1.25rem;
-    }
-    .hero-card p {
-      font-size: .85rem;
-      color: rgba(255,255,255,.6);
-      margin-bottom: .7rem;
-    }
-    .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-    .tag {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.02);
-      padding: .2rem .6rem;
+    .btn-primary {
+      background: #fff;
+      color: #0f1115;
+      border: none;
       border-radius: 999px;
-      font-size: .68rem;
-      color: rgba(255,255,255,.75);
+      padding: 0.6rem 1rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
     }
-
-    section { margin-bottom: 4.5rem; }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.55rem 1rem;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+    .hero-side {
+      background: radial-gradient(circle at top, rgba(255,255,255,0.08), rgba(255,255,255,0));
+      border: 1px solid rgba(255, 255, 255, 0.015);
+      border-radius: 32px;
+      padding: 1.1rem 1.25rem 1.1rem;
+      backdrop-filter: blur(12px);
+    }
+    .hero-side-title {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .hero-side-list {
+      display: grid;
+      gap: 0.45rem;
+    }
+    .hero-side-item {
+      background: rgba(255,255,255,0.018);
+      border: 1px solid rgba(255, 255, 255, 0.01);
+      border-radius: 14px;
+      padding: 0.4rem 0.65rem 0.5rem;
+    }
+    .hero-side-item-title {
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+    .hero-side-item-sub {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
 
     .section-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
+      font-size: clamp(1.4rem, 2vw, 1.65rem);
+      margin-bottom: 1rem;
     }
-    .section-title h2 { font-size: 1.4rem; }
-    .services {
+    .services-grid {
       display: grid;
-      gap: 1.1rem;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     }
-    .card {
-      background: rgba(255,255,255,.02);
-      border: 1px solid rgba(255,255,255,.03);
-      border-radius: 16px;
-      padding: 1.15rem 1.15rem 1.05rem;
+    .service-card {
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.01);
+      border-radius: 1.2rem;
+      padding: 1rem 1.1rem;
     }
-    .card h3 { margin-top: .1rem; }
-    .card p { color: rgba(255,255,255,.5); font-size: .84rem; }
+    .service-title {
+      font-weight: 550;
+      margin-bottom: 0.35rem;
+    }
+    .service-desc {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
     .work-grid {
       display: grid;
-      gap: 1.1rem;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
-    .work-item {
-      background: linear-gradient(160deg, rgba(255,255,255,.04) 0%, rgba(255,255,255,0) 70%);
-      border: 1px solid rgba(255,255,255,.02);
-      border-radius: 18px;
-      padding: 1rem 1rem 1.35rem;
+    .work-card {
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.015);
+      border-radius: 1.1rem;
+      padding: 0.85rem 0.85rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
     }
-    .work-item small {
-      color: rgba(255,255,255,.4);
-      font-size: .7rem;
-      text-transform: uppercase;
-      letter-spacing: .1em;
+    .work-thumb {
+      background: linear-gradient(160deg, rgba(255,255,255,0.15), rgba(255,255,255,0));
+      border-radius: 14px;
+      height: 160px;
+      margin-bottom: 0.5rem;
     }
-    .testimonial {
-      background: radial-gradient(circle at 15% 15%, rgba(255,77,109,0.11) 0%, rgba(255,77,109,0) 45%), rgba(255,255,255,.02);
-      border: 1px solid rgba(255,255,255,.03);
-      border-radius: 18px;
-      padding: 1.3rem 1.4rem 1.2rem;
-      font-size: .9rem;
-    }
-    .pricing {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.1rem;
-    }
-    .price {
-      background: rgba(255,255,255,.01);
-      border: 1px solid rgba(255,255,255,.03);
-      border-radius: 18px;
-      padding: 1.3rem 1.3rem 1.25rem;
-    }
-    .price h3 { margin-bottom: .4rem; }
-    .price strong { font-size: 1.5rem; }
-    .price ul { list-style: none; padding: 0; margin: .9rem 0 1.1rem; }
-    .price li {
-      margin-bottom: .35rem;
-      color: rgba(255,255,255,.6);
-      font-size: .78rem;
-    }
+    .work-title { font-weight: 540; }
+    .work-text { font-size: 0.78rem; color: var(--muted); }
+    .work-tags { font-size: 0.65rem; color: rgba(255,255,255,0.38); }
 
-    .cta-box {
-      background: linear-gradient(120deg, rgba(255,77,109,0.25) 0%, rgba(15,16,19,0) 65%);
-      border: 1px solid rgba(255,255,255,.03);
-      border-radius: 22px;
-      padding: 2rem 2.2rem 2.1rem;
-      text-align: left;
+    .philosophy-block, .about-block, .contact-block {
+      background: rgba(255,255,255,0.015);
+      border: 1px solid rgba(255,255,255,0.015);
+      border-radius: 1.25rem;
+      padding: 1.1rem 1.1rem 1.2rem;
     }
-    .cta-box h2 { margin-top: 0; margin-bottom: .5rem; }
-    .cta-box p { color: rgba(255,255,255,.7); max-width: 34rem; }
+    .philosophy-list { display: grid; gap: 0.3rem; }
+    .muted { color: var(--muted); }
 
     footer {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 1.7rem 1.4rem 3.5rem;
-      color: rgba(255,255,255,.4);
-      font-size: .78rem;
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.25);
+      border-top: 1px solid rgba(255,255,255,0.03);
+      text-align: center;
     }
 
     @media (max-width: 880px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
+      .hero { grid-template-columns: 1fr; }
       .nav-links { display: none; }
-      main { padding-top: 3.5rem; }
+      .hero-title { font-size: clamp(2.25rem, 9vw, 3rem); }
+      .page { padding-inline: 1rem; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="nav">
-      <div class="logo">
-        <div class="logo-badge"></div> White Rabbit
+  <div class="page">
+    <!-- sticky pill nav -->
+    <div class="top-nav-wrapper">
+      <div class="top-nav">
+        <div class="nav-brand">🐇 White Rabbit</div>
+        <div class="nav-links">
+          <a href="#hero" class="nav-link active">Úvod</a>
+          <a href="#services" class="nav-link">Co děláme</a>
+          <a href="#work" class="nav-link">Ukázky práce</a>
+          <a href="#philosophy" class="nav-link">Jak pracujeme</a>
+          <a href="#about" class="nav-link">O nás</a>
+        </div>
+        <a href="#contact" class="nav-cta">Kontakt →</a>
       </div>
-      <nav class="nav-links">
-        <a href="#sluzby" class="active">Služby</a>
-        <a href="#prace">Práce</a>
-        <a href="#cenik">Ceník</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
-      <a href="#kontakt" class="btn-primary">Domluvte focení / obsah</a>
     </div>
-  </header>
 
-  <main>
-    <section class="hero" id="home">
+    <!-- hero -->
+    <section id="hero" class="hero">
       <div>
-        <span class="eyebrow">Praha · Social & photo</span>
-        <h1>Děláme obsah, který se dá reálně použít.</h1>
-        <p>White Rabbit je agilní tým zaměřený na sociální sítě, portrétní a produktové focení a rychlou produkci pro značky. Bez řečnických otázek, bez „energie vody“, jen to, co se dá publikovat.</p>
-        <div class="hero-cta">
-          <a href="#kontakt" class="btn-primary">Chci obsah</a>
-          <span style="color:rgba(255,255,255,.55);font-size:.8rem;">nebo si projděte práce ↓</span>
-        </div>
-        <div class="hero-meta">
-          <div>
-            <div style="font-size:1.5rem;font-weight:600;">+24</div>
-            <div style="font-size:.75rem;color:rgba(255,255,255,.5);">značek obslouženo</div>
-          </div>
-          <div>
-            <div style="font-size:1.5rem;font-weight:600;">Praha 7</div>
-            <div style="font-size:.75rem;color:rgba(255,255,255,.5);">studio / lokace</div>
-          </div>
+        <div class="hero-badge">Agilní digitální agentura z Prahy</div>
+        <h1 class="hero-title">Kreativita a efektivita bez bull****</h1>
+        <p class="hero-sub">
+          Specializujeme se na sociální sítě, obsah a správu značek. Děláme reálné výstupy — fotky, videa, reels, UGC i influencer spolupráce.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="mailto:hello@whiterabbit.agency">Pojďme tvořit obsah</a>
+          <a class="btn-secondary" href="#work">Podívat se na práci</a>
         </div>
       </div>
-      <div class="hero-card">
-        <p style="text-transform:uppercase;font-size:.65rem;color:rgba(255,255,255,.5);letter-spacing:.15em;">Specializace</p>
-        <h2>Portréty & headshoty</h2>
-        <p>Pro zakladatele, doktory, interní týmy, advokáty. Přijedeme nebo fotíme u nás.</p>
-        <div class="tags">
-          <span class="tag">IG / FB ready</span>
-          <span class="tag">HSS · Fuji GFX</span>
-          <span class="tag">Retuš v ceně</span>
-          <span class="tag">Možnost videa</span>
+      <div class="hero-side">
+        <div class="hero-side-title">Co u nás nejčastěji vzniká</div>
+        <div class="hero-side-list">
+          <div class="hero-side-item">
+            <div class="hero-side-item-title">Obsah &amp; produkce</div>
+            <div class="hero-side-item-sub">Focení, video, reels, stories, carousely.</div>
+          </div>
+          <div class="hero-side-item">
+            <div class="hero-side-item-title">Správa sociálních sítí</div>
+            <div class="hero-side-item-sub">Denní exekuce, měsíční reporty.</div>
+          </div>
+          <div class="hero-side-item">
+            <div class="hero-side-item-title">Influenceři &amp; UGC</div>
+            <div class="hero-side-item-sub">Reálné tváře, autentické výstupy.</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="sluzby">
-      <div class="section-title">
-        <h2>Služby</h2>
-        <a href="#kontakt" style="font-size:.8rem;color:rgba(255,255,255,.6);">Objednat →</a>
-      </div>
-      <div class="services">
-        <div class="card">
-          <h3>Social media management</h3>
-          <p>Správa profilů, tvorba formátů, copy. Připravíme měsíční plán a hotové výstupy.</p>
+    <!-- services -->
+    <section id="services">
+      <h2 class="section-title">Co děláme</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-title">Strategie &amp; konzultace</div>
+          <div class="service-desc">Pomáháme značkám pochopit, co na sítích skutečně funguje — a proč.</div>
         </div>
-        <div class="card">
-          <h3>Foto / video produkce</h3>
-          <p>Portréty, produktové focení, Reels / Shorts. Styl pro Aquilu, Poděbradku, Hanáckou známe.</p>
+        <div class="service-card">
+          <div class="service-title">Obsah &amp; produkce</div>
+          <div class="service-desc">Od nápadu po hotový post. V našem stylu nebo podle brand manuálu.</div>
         </div>
-        <div class="card">
-          <h3>UGC / spolupráce</h3>
-          <p>Osobnosti / influenceři, posílání produktů, soutěže, jednoduché aktivačky.</p>
+        <div class="service-card">
+          <div class="service-title">Správa &amp; reporting</div>
+          <div class="service-desc">Staráme se o profily, odpovídáme, hlídáme konzistenci.</div>
         </div>
-        <div class="card">
-          <h3>Poradenství</h3>
-          <p>Když máte interní tým a chcete nastavovat styl, tone of voice a brandové guidelines.</p>
+        <div class="service-card">
+          <div class="service-title">Influenceři &amp; UGC</div>
+          <div class="service-desc">Spolupráce, které dávají smysl a nejsou trapné.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-title">Performance &amp; kampaně</div>
+          <div class="service-desc">Když je potřeba výkon, zapneme delivery mód.</div>
         </div>
       </div>
     </section>
 
-    <section id="prace">
-      <div class="section-title">
-        <h2>Vybrané práce</h2>
-        <span style="color:rgba(255,255,255,.5);font-size:.8rem;">Ukázky, které můžeme rozebrat na callu.</span>
-      </div>
+    <!-- work -->
+    <section id="work">
+      <h2 class="section-title">Ukázky práce</h2>
       <div class="work-grid">
-        <div class="work-item">
-          <small>Poděbradka · 120 let</small>
-          <h3>Reels + focení v Poděbradech</h3>
-          <p>Krátká videa s moderátorkou, cyklo content, lokální insight. Připraveno na IG i Reels.</p>
+        <div class="work-card">
+          <div class="work-thumb"></div>
+          <div class="work-title">Poděbradka 120 let</div>
+          <div class="work-text">Série Reels o cyklovýletech po Polabí. Nápad, scénář, natáčení, střih, distribuce.</div>
+          <div class="work-tags">#video #reels #brandcontent</div>
         </div>
-        <div class="work-item">
-          <small>Hanácká · funkční vody</small>
-          <h3>Podzimní focení s hercem</h3>
-          <p>Occasions podle claimů „paměť / kolagen“, fotky + video výstupy.</p>
+        <div class="work-card">
+          <div class="work-thumb"></div>
+          <div class="work-title">Kenwood Chef Attachments</div>
+          <div class="work-text">Carousel s produktovými fotkami a copy o praktických nástavcích. Reálný vzhled.</div>
+          <div class="work-tags">#photo #carousel #productshoot</div>
         </div>
-        <div class="work-item">
-          <small>Nutribullet</small>
-          <h3>IG / FB content & akce</h3>
-          <p>Recepty, stories, eventová komunikace, retuše, české copy bez zbytečných frází.</p>
+        <div class="work-card">
+          <div class="work-thumb"></div>
+          <div class="work-title">Nutribullet smoothies</div>
+          <div class="work-text">Krátká videa s recepty, která mají chuť i tempo. Vyladěné pro vertikál.</div>
+          <div class="work-tags">#video #socialcontent #ugc</div>
         </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-title">
-        <h2>Co o nás říkají</h2>
-      </div>
-      <div class="testimonial">
-        „Dodávají použitelné výstupy. Neřešíme deset iterací, rovnou to máme nachystané na publikaci.“ — Marketing manager, nápojová kategorie
-      </div>
-    </section>
-
-    <section id="cenik">
-      <div class="section-title">
-        <h2>Spolupráce</h2>
-        <span style="color:rgba(255,255,255,.5);font-size:.8rem;">Ceny orientační — podle rozsahu.</span>
-      </div>
-      <div class="pricing">
-        <div class="price">
-          <h3>Jednorázové focení</h3>
-          <strong>od 5 500 Kč</strong>
-          <ul>
-            <li>portréty / tým / produkt</li>
-            <li>Praha 7 a okolí</li>
-            <li>retuš v základním rozsahu</li>
-          </ul>
-          <a href="#kontakt" class="btn-primary">Domluvit termín</a>
-        </div>
-        <div class="price">
-          <h3>Obsah na sítě</h3>
-          <strong>od 12 000 Kč</strong>
-          <ul>
-            <li>fotky + krátká videa</li>
-            <li>copy v češtině</li>
-            <li>připravené na IG / FB</li>
-          </ul>
-          <a href="#kontakt" class="btn-primary">Chci měsíčně</a>
-        </div>
-        <div class="price">
-          <h3>Agenturní spolupráce</h3>
-          <strong>na dotaz</strong>
-          <ul>
-            <li>více značek</li>
-            <li>rychlá produkce</li>
-            <li>online consulting</li>
-          </ul>
-          <a href="#kontakt" class="btn-primary">Napište nám</a>
+        <div class="work-card">
+          <div class="work-thumb"></div>
+          <div class="work-title">Hanácká funkční vody</div>
+          <div class="work-text">Lifestyle focení a Reels pro Kolagen a Paměť. Reálné momenty, ne pózy.</div>
+          <div class="work-tags">#photo #reels #branding</div>
         </div>
       </div>
     </section>
 
-    <section id="kontakt">
-      <div class="cta-box">
-        <h2>Pojďme rovnou domluvit obsah.</h2>
-        <p>Napište nám termín, lokaci (ideálně Praha 7 / Letná) a účel fotek/videa. Pošleme zpět variantu a cenu.</p>
-        <form onsubmit="event.preventDefault(); alert('Tady bys napojil formulář na backend nebo službu typu Netlify Forms / Formspree.');" style="margin-top:1.3rem; display:flex; gap:.7rem; flex-wrap:wrap;">
-          <input type="email" required placeholder="Váš e-mail" style="padding:.55rem .7rem;border-radius:12px;border:none;min-width:15rem;">
-          <input type="text" placeholder="Co potřebujete (např. focení tým + 10 fotek)" style="padding:.55rem .7rem;border-radius:12px;border:none;min-width:17rem;flex:1;">
-          <button class="btn-primary" type="submit">Odeslat</button>
-        </form>
+    <!-- philosophy -->
+    <section id="philosophy">
+      <h2 class="section-title">Jak pracujeme</h2>
+      <div class="philosophy-block">
+        <p>Bez omáčky. Bez schvalovacích koleček. Bez složitých procesů.</p>
+        <div class="philosophy-list">
+          <span>• Tvoříme efektivně a rychle.</span>
+          <span>• Víme, že značka musí být vidět každý den, ne jednou za kvartál.</span>
+          <span>• Na každý projekt se díváme jako na vlastní.</span>
+        </div>
       </div>
     </section>
-  </main>
 
-  <footer>
-    <div>© White Rabbit, Praha — sociální sítě & focení</div>
-    <div>Vyrobeno podle šablony z Frameru.</div>
-  </footer>
+    <!-- about -->
+    <section id="about">
+      <h2 class="section-title">O nás</h2>
+      <div class="about-block">
+        <p>Jsme White Rabbit. Digitální agentura, která spojuje kreativní produkci a smysl pro výsledek.</p>
+        <p class="muted">Nevyrábíme prezentace, ale obsah, který se sdílí, lajkuje a prodává. Z Prahy 7 — do celého feedu.</p>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section id="contact">
+      <h2 class="section-title">Kontakt</h2>
+      <div class="contact-block">
+        <p>Chceš spolupracovat? Napiš nám.</p>
+        <p><a href="mailto:hello@whiterabbit.agency">hello@whiterabbit.agency</a></p>
+        <p class="muted">nebo IG: @whiterabbit.agency</p>
+      </div>
+    </section>
+
+    <footer>
+      © White Rabbit, Praha 7.
+    </footer>
+  </div>
+
+  <script>
+    // scrollspy pro pill navigaci
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-links .nav-link");
+
+    const onScroll = () => {
+      const scrollPos = window.scrollY + 120; // kvůli sticky nav
+      let currentId = "hero";
+      sections.forEach(sec => {
+        if (scrollPos >= sec.offsetTop) {
+          currentId = sec.id;
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle("active", link.getAttribute("href") === "#" + currentId);
+      });
+    };
+
+    window.addEventListener("scroll", onScroll);
+
+    // smooth scroll fix pro klik na nav
+    navLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute("href").substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          const top = target.offsetTop - 90;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      });
+    });
+    // i CTA
+    document.querySelectorAll('.nav-cta, .btn-secondary').forEach(link => {
+      link.addEventListener("click", (e) => {
+        const href = link.getAttribute("href");
+        if (href && href.startsWith("#")) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          const top = target.offsetTop - 90;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
