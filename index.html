@@ -10,13 +10,8 @@
   <style>
     :root {
       --bg: #0f1115;
-      --surface: rgba(15, 17, 21, 0.7);
-      --card: rgba(255, 255, 255, 0.03);
       --text: #ffffff;
       --muted: rgba(255, 255, 255, 0.55);
-      --radius-lg: 32px;
-      --radius-md: 20px;
-      --max-width: 1180px;
     }
     * { box-sizing: border-box; }
     body {
@@ -35,7 +30,7 @@
       padding: 1.4rem 1.4rem 3.5rem;
     }
 
-    /* sticky pill nav */
+    /* nav */
     .top-nav-wrapper {
       position: sticky;
       top: 0.8rem;
@@ -55,14 +50,8 @@
       gap: 0.35rem;
       align-items: center;
     }
-    .nav-brand img {
-      height: 20px;
-      display: block;
-    }
-    .nav-links {
-      display: flex;
-      gap: 0.2rem;
-    }
+    .nav-brand img { height: 20px; display: block; }
+    .nav-links { display: flex; gap: 0.2rem; }
     .nav-link {
       padding: 0.35rem 0.9rem;
       border-radius: 999px;
@@ -89,6 +78,7 @@
 
     section { padding-top: clamp(3rem, 5vh, 4rem); }
 
+    /* hero */
     .hero {
       display: grid;
       gap: 1.5rem;
@@ -146,10 +136,17 @@
       font-size: 0.82rem;
       cursor: pointer;
     }
+    .hero-side {
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.01);
+    }
     .hero-side img {
       width: 100%;
-      border-radius: 20px;
       display: block;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
     }
 
     .section-title {
@@ -167,19 +164,14 @@
       border-radius: 1.2rem;
       padding: 1rem 1.1rem;
     }
-    .service-title {
-      font-weight: 550;
-      margin-bottom: 0.35rem;
-    }
-    .service-desc {
-      color: var(--muted);
-      font-size: 0.8rem;
-    }
+    .service-title { font-weight: 550; margin-bottom: 0.35rem; }
+    .service-desc { color: var(--muted); font-size: 0.8rem; }
 
+    /* work */
     .work-grid {
       display: grid;
       gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     }
     .work-card {
       background: rgba(255, 255, 255, 0.015);
@@ -190,10 +182,17 @@
       flex-direction: column;
       gap: 0.4rem;
     }
+    .work-thumb {
+      border-radius: 14px;
+      overflow: hidden;
+      background: #151515;
+      aspect-ratio: 4 / 5;
+    }
     .work-thumb img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
-      border-radius: 14px;
     }
     .work-title { font-weight: 540; }
     .work-text { font-size: 0.78rem; color: var(--muted); }
@@ -254,12 +253,12 @@
           Specializujeme se na sociální sítě, obsah a správu značek. Děláme reálné výstupy — fotky, videa, reels, UGC i influencer spolupráce.
         </p>
         <div class="hero-actions">
-          <a class="btn-primary" href="mailto:hello@whiterabbit.agency">Pojďme tvořit obsah</a>
+          <a class="btn-primary" href="mailto:info@whiterabbit.cz">Pojďme tvořit obsah</a>
           <a class="btn-secondary" href="#work">Podívat se na práci</a>
         </div>
       </div>
       <div class="hero-side">
-        <img src="images/hero-side.png" alt="White Rabbit hero image">
+        <img src="images/ukazky_aquila_3.png" alt="Aquila – lifestyle focení">
       </div>
     </section>
 
@@ -294,29 +293,95 @@
     <section id="work">
       <h2 class="section-title">Ukázky práce</h2>
       <div class="work-grid">
+        <!-- Doritos 1 -->
         <div class="work-card">
-          <div class="work-thumb"><img src="images/work-podebradka.jpg" alt="Poděbradka 120 let"></div>
-          <div class="work-title">Poděbradka 120 let</div>
-          <div class="work-text">Série Reels o cyklovýletech po Polabí. Nápad, scénář, natáčení, střih, distribuce.</div>
-          <div class="work-tags">#video #reels #brandcontent</div>
+          <div class="work-thumb">
+            <img src="images/ukazky_doritos_1.png" alt="Doritos makeup look">
+          </div>
+          <div class="work-title">Doritos – special makeup look</div>
+          <div class="work-text">Grafický post k nové příchuti, kombinace make-upu a brand prvků.</div>
+          <div class="work-tags">#doritos #content #reels</div>
         </div>
+        <!-- Doritos 2 -->
         <div class="work-card">
-          <div class="work-thumb"><img src="images/work-kenwood.jpg" alt="Kenwood"></div>
-          <div class="work-title">Kenwood Chef Attachments</div>
-          <div class="work-text">Carousel s produktovými fotkami a copy o praktických nástavcích. Reálný vzhled.</div>
-          <div class="work-tags">#photo #carousel #productshoot</div>
+          <div class="work-thumb">
+            <img src="images/ukazky_doritos_2.png" alt="Doritos modrý makeup">
+          </div>
+          <div class="work-title">Doritos – vertikální video vizuál</div>
+          <div class="work-text">Detailní beauty stylizace pro rychlý social výstup.</div>
+          <div class="work-tags">#beauty #snacks #social</div>
         </div>
+        <!-- Nutribullet 1 -->
         <div class="work-card">
-          <div class="work-thumb"><img src="images/work-nutribullet.jpg" alt="Nutribullet"></div>
-          <div class="work-title">Nutribullet smoothies</div>
-          <div class="work-text">Krátká videa s recepty, která mají chuť i tempo. Vyladěné pro vertikál.</div>
-          <div class="work-tags">#video #socialcontent #ugc</div>
+          <div class="work-thumb">
+            <img src="images/ukazky_nutribullet_1.png" alt="Nutribullet festival">
+          </div>
+          <div class="work-title">Nutribullet – eventový obsah</div>
+          <div class="work-text">Lifestyle fotka z akce, produkt v ruce, letní vibe.</div>
+          <div class="work-tags">#nutribullet #event #photo</div>
         </div>
+        <!-- Nutribullet 2 -->
         <div class="work-card">
-          <div class="work-thumb"><img src="images/work-hanacka.jpg" alt="Hanácká"></div>
-          <div class="work-title">Hanácká funkční vody</div>
-          <div class="work-text">Lifestyle focení a Reels pro Kolagen a Paměť. Reálné momenty, ne pózy.</div>
-          <div class="work-tags">#photo #reels #branding</div>
+          <div class="work-thumb">
+            <img src="images/ukazky_nutribullet_2.png" alt="Nutribullet promo tým">
+          </div>
+          <div class="work-title">Nutribullet – brand přítomnost</div>
+          <div class="work-text">Dvojice s brandovanými taškami, jasná identifikace značky.</div>
+          <div class="work-tags">#brand #outdoor #photo</div>
+        </div>
+        <!-- Aquila 2 -->
+        <div class="work-card">
+          <div class="work-thumb">
+            <img src="images/ukazky_aquila_2.png" alt="Aquila – top view s lahví">
+          </div>
+          <div class="work-title">Aquila – city lifestyle</div>
+          <div class="work-text">Vertikální záběr shora, barevně sladěný s lahví.</div>
+          <div class="work-tags">#aquila #lifestyle #vertical</div>
+        </div>
+        <!-- Aquila 4 -->
+        <div class="work-card">
+          <div class="work-thumb">
+            <img src="images/ukazky_aquila_4.png" alt="Aquila – chill content">
+          </div>
+          <div class="work-title">Aquila – chill portrét</div>
+          <div class="work-text">Uvolněný portrét s produktem, street prostředí.</div>
+          <div class="work-tags">#aquila #portrait #socialcontent</div>
+        </div>
+        <!-- Aquila 5 -->
+        <div class="work-card">
+          <div class="work-thumb">
+            <img src="images/ukazky_aquila_5.png" alt="Aquila – food & mobile">
+          </div>
+          <div class="work-title">Aquila – social & food</div>
+          <div class="work-text">Food scéna s mobilem a produktem, vhodné do stories.</div>
+          <div class="work-tags">#food #aquila #stories</div>
+        </div>
+        <!-- Hanácká 1 -->
+        <div class="work-card">
+          <div class="work-thumb">
+            <img src="images/ukazky_hanacka_1.png" alt="Hanácká – mapa a voda">
+          </div>
+          <div class="work-title">Hanácká – Paměť na cestách</div>
+          <div class="work-text">Podzimní scéna s mapou, funkční voda v záběru.</div>
+          <div class="work-tags">#hanacka #functional #outdoor</div>
+        </div>
+        <!-- Hanácká 2 -->
+        <div class="work-card">
+          <div class="work-thumb">
+            <img src="images/ukazky_hanacka_2.png" alt="Hanácká – kolagen v přírodě">
+          </div>
+          <div class="work-title">Hanácká – Kolagen v pohybu</div>
+          <div class="work-text">Lifestyle během výletu, produkt v ruce, jasné podzimní barvy.</div>
+          <div class="work-tags">#hanacka #kolagen #lifestyle</div>
+        </div>
+        <!-- Aquila 3 (reuse) -->
+        <div class="work-card">
+          <div class="work-thumb">
+            <img src="images/ukazky_aquila_3.png" alt="Aquila – kytara a voda">
+          </div>
+          <div class="work-title">Aquila – kreativní portrét</div>
+          <div class="work-text">Hudební scéna s produktem, funguje na reels i foto.</div>
+          <div class="work-tags">#aquila #portrait #reels</div>
         </div>
       </div>
     </section>
@@ -348,8 +413,8 @@
       <h2 class="section-title">Kontakt</h2>
       <div class="contact-block">
         <p>Chceš spolupracovat? Napiš nám.</p>
-        <p><a href="mailto:hello@whiterabbit.agency">hello@whiterabbit.agency</a></p>
-        <p class="muted">nebo IG: @whiterabbit.agency</p>
+        <p><a href="mailto:info@whiterabbit.cz">info@whiterabbit.cz</a></p>
+        <p class="muted">nebo IG: @whiterabbitpraha</p>
       </div>
     </section>
 
@@ -359,7 +424,7 @@
   </div>
 
   <script>
-    // scrollspy pro pill navigaci
+    // scrollspy
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll(".nav-links .nav-link");
 
@@ -367,9 +432,7 @@
       const scrollPos = window.scrollY + 120;
       let currentId = "hero";
       sections.forEach(sec => {
-        if (scrollPos >= sec.offsetTop) {
-          currentId = sec.id;
-        }
+        if (scrollPos >= sec.offsetTop) currentId = sec.id;
       });
       navLinks.forEach(link => {
         link.classList.toggle("active", link.getAttribute("href") === "#" + currentId);
