@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>White Rabbit – kreativita a efektivita bez bull****</title>
+  <link rel="icon" type="image/png" href="images/favicon-32.png" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <meta property="og:image" content="images/og-image.jpg" />
   <style>
     :root {
       --bg: #0f1115;
@@ -52,15 +55,9 @@
       gap: 0.35rem;
       align-items: center;
     }
-    .nav-brand {
-      font-weight: 600;
-      padding: 0.4rem 0.8rem 0.4rem 0.65rem;
-      display: flex;
-      gap: 0.35rem;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 999px;
-      font-size: 0.8rem;
+    .nav-brand img {
+      height: 20px;
+      display: block;
     }
     .nav-links {
       display: flex;
@@ -90,9 +87,8 @@
       gap: 0.2rem;
     }
 
-    section {
-      padding-top: clamp(3rem, 5vh, 4rem);
-    }
+    section { padding-top: clamp(3rem, 5vh, 4rem); }
+
     .hero {
       display: grid;
       gap: 1.5rem;
@@ -150,35 +146,10 @@
       font-size: 0.82rem;
       cursor: pointer;
     }
-    .hero-side {
-      background: radial-gradient(circle at top, rgba(255,255,255,0.08), rgba(255,255,255,0));
-      border: 1px solid rgba(255, 255, 255, 0.015);
-      border-radius: 32px;
-      padding: 1.1rem 1.25rem 1.1rem;
-      backdrop-filter: blur(12px);
-    }
-    .hero-side-title {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.6rem;
-    }
-    .hero-side-list {
-      display: grid;
-      gap: 0.45rem;
-    }
-    .hero-side-item {
-      background: rgba(255,255,255,0.018);
-      border: 1px solid rgba(255, 255, 255, 0.01);
-      border-radius: 14px;
-      padding: 0.4rem 0.65rem 0.5rem;
-    }
-    .hero-side-item-title {
-      font-size: 0.82rem;
-      font-weight: 500;
-    }
-    .hero-side-item-sub {
-      font-size: 0.7rem;
-      color: var(--muted);
+    .hero-side img {
+      width: 100%;
+      border-radius: 20px;
+      display: block;
     }
 
     .section-title {
@@ -219,11 +190,10 @@
       flex-direction: column;
       gap: 0.4rem;
     }
-    .work-thumb {
-      background: linear-gradient(160deg, rgba(255,255,255,0.15), rgba(255,255,255,0));
+    .work-thumb img {
+      width: 100%;
+      display: block;
       border-radius: 14px;
-      height: 160px;
-      margin-bottom: 0.5rem;
     }
     .work-title { font-weight: 540; }
     .work-text { font-size: 0.78rem; color: var(--muted); }
@@ -257,10 +227,13 @@
 </head>
 <body>
   <div class="page">
+
     <!-- sticky pill nav -->
     <div class="top-nav-wrapper">
       <div class="top-nav">
-        <div class="nav-brand">🐇 White Rabbit</div>
+        <div class="nav-brand">
+          <img src="images/logo-whiterabbit-light.png" alt="White Rabbit">
+        </div>
         <div class="nav-links">
           <a href="#hero" class="nav-link active">Úvod</a>
           <a href="#services" class="nav-link">Co děláme</a>
@@ -286,21 +259,7 @@
         </div>
       </div>
       <div class="hero-side">
-        <div class="hero-side-title">Co u nás nejčastěji vzniká</div>
-        <div class="hero-side-list">
-          <div class="hero-side-item">
-            <div class="hero-side-item-title">Obsah &amp; produkce</div>
-            <div class="hero-side-item-sub">Focení, video, reels, stories, carousely.</div>
-          </div>
-          <div class="hero-side-item">
-            <div class="hero-side-item-title">Správa sociálních sítí</div>
-            <div class="hero-side-item-sub">Denní exekuce, měsíční reporty.</div>
-          </div>
-          <div class="hero-side-item">
-            <div class="hero-side-item-title">Influenceři &amp; UGC</div>
-            <div class="hero-side-item-sub">Reálné tváře, autentické výstupy.</div>
-          </div>
-        </div>
+        <img src="images/hero-side.png" alt="White Rabbit hero image">
       </div>
     </section>
 
@@ -336,25 +295,25 @@
       <h2 class="section-title">Ukázky práce</h2>
       <div class="work-grid">
         <div class="work-card">
-          <div class="work-thumb"></div>
+          <div class="work-thumb"><img src="images/work-podebradka.jpg" alt="Poděbradka 120 let"></div>
           <div class="work-title">Poděbradka 120 let</div>
           <div class="work-text">Série Reels o cyklovýletech po Polabí. Nápad, scénář, natáčení, střih, distribuce.</div>
           <div class="work-tags">#video #reels #brandcontent</div>
         </div>
         <div class="work-card">
-          <div class="work-thumb"></div>
+          <div class="work-thumb"><img src="images/work-kenwood.jpg" alt="Kenwood"></div>
           <div class="work-title">Kenwood Chef Attachments</div>
           <div class="work-text">Carousel s produktovými fotkami a copy o praktických nástavcích. Reálný vzhled.</div>
           <div class="work-tags">#photo #carousel #productshoot</div>
         </div>
         <div class="work-card">
-          <div class="work-thumb"></div>
+          <div class="work-thumb"><img src="images/work-nutribullet.jpg" alt="Nutribullet"></div>
           <div class="work-title">Nutribullet smoothies</div>
           <div class="work-text">Krátká videa s recepty, která mají chuť i tempo. Vyladěné pro vertikál.</div>
           <div class="work-tags">#video #socialcontent #ugc</div>
         </div>
         <div class="work-card">
-          <div class="work-thumb"></div>
+          <div class="work-thumb"><img src="images/work-hanacka.jpg" alt="Hanácká"></div>
           <div class="work-title">Hanácká funkční vody</div>
           <div class="work-text">Lifestyle focení a Reels pro Kolagen a Paměť. Reálné momenty, ne pózy.</div>
           <div class="work-tags">#photo #reels #branding</div>
@@ -405,7 +364,7 @@
     const navLinks = document.querySelectorAll(".nav-links .nav-link");
 
     const onScroll = () => {
-      const scrollPos = window.scrollY + 120; // kvůli sticky nav
+      const scrollPos = window.scrollY + 120;
       let currentId = "hero";
       sections.forEach(sec => {
         if (scrollPos >= sec.offsetTop) {
@@ -416,33 +375,7 @@
         link.classList.toggle("active", link.getAttribute("href") === "#" + currentId);
       });
     };
-
     window.addEventListener("scroll", onScroll);
-
-    // smooth scroll fix pro klik na nav
-    navLinks.forEach(link => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute("href").substring(1);
-        const target = document.getElementById(targetId);
-        if (target) {
-          const top = target.offsetTop - 90;
-          window.scrollTo({ top, behavior: "smooth" });
-        }
-      });
-    });
-    // i CTA
-    document.querySelectorAll('.nav-cta, .btn-secondary').forEach(link => {
-      link.addEventListener("click", (e) => {
-        const href = link.getAttribute("href");
-        if (href && href.startsWith("#")) {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          const top = target.offsetTop - 90;
-          window.scrollTo({ top, behavior: "smooth" });
-        }
-      });
-    });
   </script>
 </body>
 </html>
