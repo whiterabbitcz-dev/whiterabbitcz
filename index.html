@@ -257,6 +257,74 @@
       object-fit: cover;
       display: block;
     }
+    /* carousel inside work card */
+.carousel {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #121212;
+}
+
+.carousel-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-track img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex: 0 0 100%;
+  display: block;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.35);
+  border: none;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+.carousel-btn.prev { left: 8px; }
+.carousel-btn.next { right: 8px; }
+
+.carousel-dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+}
+.carousel-dots .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.3);
+  border: none;
+  cursor: pointer;
+}
+.carousel-dots .dot.active {
+  background: #fff;
+  width: 16px;
+}
+@media (max-width: 600px) {
+  .carousel-btn {
+    width: 26px;
+    height: 26px;
+  }
+}
     .work-title { font-weight: 540; }
     .work-text { font-size: 0.78rem; color: var(--muted); }
     .work-tags { font-size: 0.65rem; color: rgba(255,255,255,0.38); }
@@ -357,14 +425,25 @@
 
       <div class="work-grid">
         <!-- Doritos 1 -->
-        <div class="work-card">
-          <div class="work-thumb">
-            <img src="images/ukazky_doritos_1.png" alt="Doritos makeup look">
-          </div>
-          <div class="work-title">Doritos – special makeup look</div>
-          <div class="work-text">Grafický post k nové příchuti, kombinace make-upu a brand prvků.</div>
-          <div class="work-tags">#doritos #content #reels</div>
-        </div>
+<div class="work-card">
+  <div class="work-thumb carousel" data-carousel-id="doritos">
+    <div class="carousel-track">
+      <img src="images/ukazky_doritos_1.png" alt="Doritos – special makeup look">
+      <img src="images/ukazky_doritos_2.png" alt="Doritos – vertikální video vizuál">
+      <img src="images/ukazky_nutribullet_1.png" alt="Nutribullet – eventový obsah">
+    </div>
+    <button class="carousel-btn prev" aria-label="Předchozí snímek">‹</button>
+    <button class="carousel-btn next" aria-label="Další snímek">›</button>
+    <div class="carousel-dots">
+      <button class="dot active" data-index="0"></button>
+      <button class="dot" data-index="1"></button>
+      <button class="dot" data-index="2"></button>
+    </div>
+  </div>
+  <div class="work-title">Doritos – special makeup look</div>
+  <div class="work-text">Grafický post k nové příchuti, kombinace make-upu a brand prvků. + další ukázky v carouselu.</div>
+  <div class="work-tags">#doritos #content #reels</div>
+</div>
         <!-- Doritos 2 -->
         <div class="work-card">
           <div class="work-thumb">
