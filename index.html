@@ -31,50 +31,94 @@
     }
 
     /* nav */
-    .top-nav-wrapper {
-      position: sticky;
-      top: 0.8rem;
-      z-index: 50;
-      display: flex;
-      justify-content: center;
-      pointer-events: none;
-    }
-    .top-nav {
-      pointer-events: auto;
-      backdrop-filter: blur(22px);
-      background: rgba(11, 12, 14, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 9999px;
-      padding: 0.45rem 0.45rem;
-      display: flex;
-      gap: 0.35rem;
-      align-items: center;
-    }
-    .nav-brand img { height: 20px; display: block; }
-    .nav-links { display: flex; gap: 0.2rem; }
-    .nav-link {
-      padding: 0.35rem 0.9rem;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      transition: background 0.2s;
-    }
-    .nav-link:hover,
-    .nav-link.active {
-      background: rgba(255, 255, 255, 0.07);
-      color: #fff;
-    }
-    .nav-cta {
-      background: #fff;
-      color: #0f1115;
-      font-weight: 500;
-      padding: 0.35rem 0.85rem;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      display: flex;
-      align-items: center;
-      gap: 0.2rem;
-    }
+.top-nav-wrapper {
+  position: sticky;
+  top: 0.8rem;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.top-nav {
+  pointer-events: auto;
+  backdrop-filter: blur(22px);
+  background: rgba(11, 12, 14, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 9999px;
+  padding: 0.45rem 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  max-width: 100%;
+}
+
+.nav-brand img {
+  height: 24px;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.6);
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.nav-link .nav-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  flex: 0 0 auto;
+}
+.nav-link:hover,
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+
+.nav-cta {
+  background: #fff;
+  color: #0f1115;
+  font-weight: 500;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+/* mobilní úprava */
+@media (max-width: 880px) {
+  .top-nav {
+    width: min(100%, 100vw - 1.6rem);
+  }
+  .nav-links {
+    overflow-x: auto;
+    scrollbar-width: none;    /* firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+  .nav-links::-webkit-scrollbar {
+    display: none;            /* chrome/safari */
+  }
+  .nav-link {
+    background: rgba(255,255,255,0.02);
+  }
+  .nav-cta {
+    display: none; /* na mobilu pryč, ať nepřekáží */
+  }
+}
 
     section { padding-top: clamp(3rem, 5vh, 4rem); }
 
@@ -379,21 +423,40 @@
   <div class="page">
 
     <!-- sticky pill nav -->
-    <div class="top-nav-wrapper">
-      <div class="top-nav">
-        <div class="nav-brand">
-          <img src="images/logo-whiterabbit-light.svg" alt="White Rabbit">
-        </div>
-        <div class="nav-links">
-          <a href="#hero" class="nav-link active">Úvod</a>
-          <a href="#services" class="nav-link">Co děláme</a>
-          <a href="#work" class="nav-link">Ukázky práce</a>
-          <a href="#philosophy" class="nav-link">Jak pracujeme</a>
-          <a href="#about" class="nav-link">O nás</a>
-        </div>
-        <a href="#contact" class="nav-cta">Kontakt →</a>
-      </div>
+<div class="top-nav-wrapper">
+  <div class="top-nav">
+    <div class="nav-brand">
+      <img src="images/logo-whiterabbit-light.svg" alt="White Rabbit">
     </div>
+    <div class="nav-links">
+      <a href="#hero" class="nav-link active">
+        <span class="nav-icon"></span>
+        Úvod
+      </a>
+      <a href="#services" class="nav-link">
+        <span class="nav-icon"></span>
+        Co děláme
+      </a>
+      <a href="#work" class="nav-link">
+        <span class="nav-icon"></span>
+        Ukázky
+      </a>
+      <a href="#philosophy" class="nav-link">
+        <span class="nav-icon"></span>
+        Jak pracujeme
+      </a>
+      <a href="#about" class="nav-link">
+        <span class="nav-icon"></span>
+        O nás
+      </a>
+      <a href="#contact" class="nav-link">
+        <span class="nav-icon"></span>
+        Kontakt
+      </a>
+    </div>
+    <a href="#contact" class="nav-cta">Kontakt →</a>
+  </div>
+</div>
 
     <!-- hero -->
     <section id="hero" class="hero">
