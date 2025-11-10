@@ -288,7 +288,7 @@
   background: rgba(0,0,0,0.45);
   border: none;
   color: #fff;
-  width: 48px;   /* původně 39 */
+  width: 48px;
   height: 48px;
   border-radius: 50%;
   display: flex;
@@ -296,20 +296,23 @@
   justify-content: center;
   cursor: pointer;
   backdrop-filter: blur(6px);
-  font-size: 1.6rem;   /* zvětšeno */
   transition: background 0.2s ease;
 }
-.carousel-btn:hover {
-  background: rgba(0,0,0,0.65);
+.carousel-btn svg {
+  width: 50%;
+  height: 50%;
 }
 .carousel-btn.prev { left: 10px; }
 .carousel-btn.next { right: 10px; }
 
 @media (max-width: 600px) {
   .carousel-btn {
-    width: 180px;     /* 2× větší než ta předchozí mobilní verze */
-    height: 180px;
-    font-size: 3.5rem;  /* odpovídá tomu scale */
+    width: 120px;
+    height: 120px;
+  }
+  .carousel-btn svg {
+    width: 40%;
+    height: 40%;
   }
 }
 
@@ -449,8 +452,16 @@
       <img src="images/ukazky_doritos_2.png" alt="Doritos – vertikální video vizuál">
       <img src="images/ukazky_nutribullet_1.png" alt="Nutribullet – eventový obsah">
     </div>
-    <button class="carousel-btn prev" aria-label="Předchozí snímek">‹</button>
-    <button class="carousel-btn next" aria-label="Další snímek">›</button>
+<button class="carousel-btn prev" aria-label="Předchozí snímek">
+  <svg viewBox="0 0 24 24">
+    <polyline points="15 18 9 12 15 6" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+<button class="carousel-btn next" aria-label="Další snímek">
+  <svg viewBox="0 0 24 24">
+    <polyline points="9 6 15 12 9 18" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
     <div class="carousel-dots">
       <button class="dot active" data-index="0"></button>
       <button class="dot" data-index="1"></button>
