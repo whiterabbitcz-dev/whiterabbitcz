@@ -285,28 +285,33 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.45);
   border: none;
   color: #fff;
-  width: 39px;
-  height: 39px;
-  border-radius: 999px;
-  display: flex;              /* tady změna */
-  align-items: center;        /* tady změna */
-  justify-content: center;    /* tady změna */
+  width: 48px;   /* původně 39 */
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  backdrop-filter: blur(4px);
-  font-size: 1.2rem;
+  backdrop-filter: blur(6px);
+  font-size: 1.6rem;   /* zvětšeno */
+  transition: background 0.2s ease;
 }
-.carousel-btn.prev { left: 8px; }
-.carousel-btn.next { right: 8px; }
+.carousel-btn:hover {
+  background: rgba(0,0,0,0.65);
+}
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
 
 @media (max-width: 600px) {
   .carousel-btn {
-    width: 90px;
-    height: 90px;
-    font-size: 2rem;   /* trochu menší, než 2.2rem */
+    width: 180px;     /* 2× větší než ta předchozí mobilní verze */
+    height: 180px;
+    font-size: 3.5rem;  /* odpovídá tomu scale */
   }
+}
 }
 }
 .carousel-btn.prev { left: 8px; }
