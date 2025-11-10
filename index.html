@@ -25,19 +25,34 @@
     }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
+    section { padding-top: clamp(3rem, 5vh, 4rem); }
     .page {
       width: min(100%, 1240px);
       margin: 0 auto;
       padding: 1.4rem 1.4rem 3.5rem;
     }
 
-    /* ============ NAV ============ */
-    .top-nav-wrapper {
+    /* ===== top bar (logo + pill) ===== */
+    .top-shell {
       position: sticky;
       top: 0.8rem;
       z-index: 50;
       display: flex;
-      justify-content: center;
+      align-items: center;
+      gap: 0.8rem;
+      pointer-events: none;
+    }
+    .nav-brand {
+      pointer-events: auto;
+    }
+    .nav-brand img {
+      height: 28px;
+      display: block;
+    }
+    .top-nav-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: flex-start;
       pointer-events: none;
     }
     .top-nav {
@@ -51,10 +66,6 @@
       gap: 0.5rem;
       align-items: center;
       max-width: 100%;
-    }
-    .nav-brand img {
-      height: 24px;
-      display: block;
     }
     .nav-links {
       display: flex;
@@ -71,9 +82,12 @@
       white-space: nowrap;
       transition: background 0.2s;
     }
-    /* desktop – žádná ikonka */
+    /* desktop – text pilly, ikony schovat */
     .nav-link .nav-icon {
       display: none;
+    }
+    .nav-link .nav-label {
+      display: inline;
     }
     .nav-link:hover,
     .nav-link.active {
@@ -92,46 +106,29 @@
       gap: 0.2rem;
     }
 
-    /* mobile nav – jen ikonky, scrollovatelné */
-    @media (max-width: 880px) {
-      .top-nav {
-        width: min(100%, 100vw - 1.6rem);
-      }
-      .nav-links {
-        overflow-x: auto;
-        scrollbar-width: none;
-      }
-      .nav-links::-webkit-scrollbar { display: none; }
-      .nav-link {
-        background: rgba(255,255,255,0.02);
-        padding: 0.35rem;
-        border-radius: 999px;
-      }
-      .nav-link .nav-label {
-        display: none;
-      }
-      .nav-link .nav-icon {
-        display: flex;
-        width: 26px;
-        height: 26px;
-        border-radius: 999px;
-        background: rgba(255,255,255,0.12);
-        align-items: center;
-        justify-content: center;
-      }
-      .nav-link .nav-icon svg {
-        width: 60%;
-        height: 60%;
-        stroke: #fff;
-      }
-      .nav-cta {
-        display: none;
-      }
+    /* ===== rotující pill pod menu ===== */
+    .nav-ticker {
+      margin-top: 0.7rem;
+      display: inline-flex;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.02);
+      border-radius: 999px;
+      padding: 0.25rem 0.9rem;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.65);
+      gap: 0.35rem;
+      align-items: center;
+    }
+    .nav-ticker-pill {
+      animation: fadeIn 0.25s ease;
+      white-space: nowrap;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    section { padding-top: clamp(3rem, 5vh, 4rem); }
-
-    /* ============ HERO ============ */
+    /* ===== HERO ===== */
     .hero {
       display: grid;
       gap: 1.5rem;
@@ -206,7 +203,7 @@
       margin-bottom: 1rem;
     }
 
-    /* ============ SERVICES ============ */
+    /* ===== SERVICES ===== */
     .services-grid {
       display: grid;
       gap: 1rem;
@@ -221,7 +218,7 @@
     .service-title { font-weight: 550; margin-bottom: 0.35rem; }
     .service-desc { color: var(--muted); font-size: 0.8rem; }
 
-    /* ============ WORK ============ */
+    /* ===== WORK ===== */
     .work-grid {
       display: grid;
       gap: 1rem;
@@ -251,7 +248,7 @@
     .work-text { font-size: 0.78rem; color: var(--muted); }
     .work-tags { font-size: 0.65rem; color: rgba(255,255,255,0.38); }
 
-    /* carousel in card */
+    /* carousel in cards */
     .carousel {
       position: relative;
       aspect-ratio: 4 / 5;
@@ -345,7 +342,7 @@
       color: #fff;
     }
 
-    /* ============ OTHER SECTIONS ============ */
+    /* other sections */
     .philosophy-block, .about-block, .contact-block {
       background: rgba(255,255,255,0.015);
       border: 1px solid rgba(255,255,255,0.015);
@@ -364,11 +361,49 @@
       text-align: center;
     }
 
-    /* responsive */
+    /* ===== responsive ===== */
     @media (max-width: 880px) {
+      .page { padding-inline: 1rem; }
+
+      .top-shell {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .top-nav-wrapper {
+        width: 100%;
+      }
+      .top-nav {
+        width: min(100%, 100vw - 1.6rem);
+      }
+      .nav-links {
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .nav-links::-webkit-scrollbar { display: none; }
+
+      /* mobil – jen ikonky */
+      .nav-link .nav-label { display: none; }
+      .nav-link .nav-icon {
+        display: flex;
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.12);
+        align-items: center;
+        justify-content: center;
+      }
+      .nav-link .nav-icon svg {
+        width: 60%;
+        height: 60%;
+      }
+      .nav-link {
+        background: rgba(255,255,255,0.01);
+        padding: 0.35rem;
+      }
+      .nav-cta { display: none; }
+
       .hero { grid-template-columns: 1fr; }
       .hero-title { font-size: clamp(2.25rem, 9vw, 3rem); }
-      .page { padding-inline: 1rem; }
     }
 
     @media (max-width: 600px) {
@@ -386,70 +421,77 @@
 <body>
   <div class="page">
 
-    <!-- sticky pill nav -->
-    <div class="top-nav-wrapper">
-      <div class="top-nav">
-        <div class="nav-brand">
-          <img src="images/logo-whiterabbit-light.svg" alt="White Rabbit">
-        </div>
-        <div class="nav-links">
-          <a href="#hero" class="nav-link active">
-            <span class="nav-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                <path d="M4 10.5 12 4l8 6.5V20H4z" stroke="currentColor" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <span class="nav-label">Úvod</span>
-          </a>
-          <a href="#services" class="nav-link">
-            <span class="nav-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                <rect x="4" y="4" width="6" height="6" rx="1" stroke="currentColor"/>
-                <rect x="14" y="4" width="6" height="6" rx="1" stroke="currentColor"/>
-                <rect x="4" y="14" width="6" height="6" rx="1" stroke="currentColor"/>
-                <rect x="14" y="14" width="6" height="6" rx="1" stroke="currentColor"/>
-              </svg>
-            </span>
-            <span class="nav-label">Co děláme</span>
-          </a>
-          <a href="#work" class="nav-link">
-            <span class="nav-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                <path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <span class="nav-label">Ukázky</span>
-          </a>
-          <a href="#philosophy" class="nav-link">
-            <span class="nav-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                <circle cx="12" cy="12" r="5" stroke="currentColor"/>
-                <path d="M12 7v5l3 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <span class="nav-label">Jak pracujeme</span>
-          </a>
-          <a href="#about" class="nav-link">
-            <span class="nav-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                <circle cx="12" cy="8" r="3" stroke="currentColor"/>
-                <path d="M5 20c1.2-3 3.6-4.5 7-4.5 3.4 0 5.8 1.5 7 4.5" stroke="currentColor" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <span class="nav-label">O nás</span>
-          </a>
-          <a href="#contact" class="nav-link">
-            <span class="nav-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                <path d="M4 6h16v12H4z" stroke="currentColor"/>
-                <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <span class="nav-label">Kontakt</span>
-          </a>
-        </div>
-        <a href="#contact" class="nav-cta">Kontakt →</a>
+    <!-- top: logo + pill -->
+    <header class="top-shell">
+      <div class="nav-brand">
+        <img src="images/logo-whiterabbit-light.svg" alt="White Rabbit">
       </div>
+      <div class="top-nav-wrapper">
+        <div class="top-nav">
+          <div class="nav-links">
+            <a href="#hero" class="nav-link active">
+              <span class="nav-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path d="M4 10.5 12 4l8 6.5V20H4z" stroke="currentColor" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="nav-label">Úvod</span>
+            </a>
+            <a href="#services" class="nav-link">
+              <span class="nav-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <rect x="4" y="4" width="6" height="6" rx="1" stroke="currentColor"/>
+                  <rect x="14" y="4" width="6" height="6" rx="1" stroke="currentColor"/>
+                  <rect x="4" y="14" width="6" height="6" rx="1" stroke="currentColor"/>
+                  <rect x="14" y="14" width="6" height="6" rx="1" stroke="currentColor"/>
+                </svg>
+              </span>
+              <span class="nav-label">Co děláme</span>
+            </a>
+            <a href="#work" class="nav-link">
+              <span class="nav-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="nav-label">Ukázky</span>
+            </a>
+            <a href="#philosophy" class="nav-link">
+              <span class="nav-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <circle cx="12" cy="12" r="5" stroke="currentColor"/>
+                  <path d="M12 7v5l3 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="nav-label">Jak pracujeme</span>
+            </a>
+            <a href="#about" class="nav-link">
+              <span class="nav-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <circle cx="12" cy="8" r="3" stroke="currentColor"/>
+                  <path d="M5 20c1.2-3 3.6-4.5 7-4.5 3.4 0 5.8 1.5 7 4.5" stroke="currentColor" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="nav-label">O nás</span>
+            </a>
+            <a href="#contact" class="nav-link">
+              <span class="nav-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path d="M4 6h16v12H4z" stroke="currentColor"/>
+                  <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="nav-label">Kontakt</span>
+            </a>
+          </div>
+          <a href="#contact" class="nav-cta">Kontakt →</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- rotating pills -->
+    <div class="nav-ticker" aria-label="Služby White Rabbit">
+      <div class="nav-ticker-pill" id="navTicker">Obsah &amp; produkce</div>
     </div>
 
     <!-- hero -->
@@ -531,6 +573,7 @@
           <div class="work-tags">#doritos #content #reels</div>
         </div>
 
+        <!-- další karty -->
         <div class="work-card">
           <div class="work-thumb">
             <img src="images/ukazky_doritos_2.png" alt="Doritos modrý makeup">
@@ -614,7 +657,7 @@
       </div>
     </section>
 
-    <!-- reels thumbs -->
+    <!-- reels -->
     <section id="work-reels">
       <h3 class="section-title" style="margin-top:2.5rem;">Reels na Instagramu</h3>
       <div class="work-grid ig-previews">
@@ -629,6 +672,7 @@
           <div class="work-text">Reels k aktivaci Aquila, low shutter kolem stojící postavy.</div>
           <div class="work-tags">#aquila #reels</div>
         </div>
+
         <div class="work-card">
           <a href="https://www.instagram.com/p/DIBv26hsHyK/" target="_blank" rel="noopener" class="ig-link">
             <div class="ig-thumb">
@@ -640,6 +684,7 @@
           <div class="work-text">Krátký snack video s produktem v hlavní roli.</div>
           <div class="work-tags">#doritos #reels</div>
         </div>
+
         <div class="work-card">
           <a href="https://www.instagram.com/p/DPMbFarjYmt/" target="_blank" rel="noopener" class="ig-link">
             <div class="ig-thumb">
@@ -651,6 +696,7 @@
           <div class="work-text">Vertikální formát pro brandový rozhovor.</div>
           <div class="work-tags">#hanacka #video</div>
         </div>
+
         <div class="work-card">
           <a href="https://www.instagram.com/p/DQMlO-FjLko/" target="_blank" rel="noopener" class="ig-link">
             <div class="ig-thumb">
@@ -783,6 +829,31 @@
           isSwiping = false;
         });
       });
+    })();
+  </script>
+
+  <!-- rotating pill under nav -->
+  <script>
+    (function() {
+      const items = [
+        "Obsah & produkce",
+        "Reels & video",
+        "UGC & influenceři",
+        "Správa profilů",
+        "Kampaně & reporting"
+      ];
+      const target = document.getElementById("navTicker");
+      if (!target) return;
+      let i = 0;
+      setInterval(() => {
+        i = (i + 1) % items.length;
+        target.textContent = items[i];
+        target.style.animation = "none";
+        // force reflow
+        void target.offsetWidth;
+        target.style.animation = "";
+        target.style.animation = "fadeIn 0.25s ease";
+      }, 2400);
     })();
   </script>
 </body>
