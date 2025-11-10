@@ -291,8 +291,9 @@
   width: 39px;
   height: 39px;
   border-radius: 999px;
-  display: grid;
-  place-items: center;
+  display: flex;              /* tady změna */
+  align-items: center;        /* tady změna */
+  justify-content: center;    /* tady změna */
   cursor: pointer;
   backdrop-filter: blur(4px);
   font-size: 1.2rem;
@@ -304,8 +305,9 @@
   .carousel-btn {
     width: 90px;
     height: 90px;
-    font-size: 2.2rem;
+    font-size: 2rem;   /* trochu menší, než 2.2rem */
   }
+}
 }
 .carousel-btn.prev { left: 8px; }
 .carousel-btn.next { right: 8px; }
